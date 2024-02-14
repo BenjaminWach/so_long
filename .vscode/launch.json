@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/benjamin_wach/42_cursus/42_so_long/src",
+      "program": "/Users/benjamin_wach/42_cursus/42_so_long/src/build/Debug/outDebug"
+    }
+  ]
+}
