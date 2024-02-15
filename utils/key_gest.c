@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:41:10 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 00:21:38 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/15 11:18:02 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	fetch_action_keys(int keycode)
 	return (0);
 }
 
-void	unset_action(t_data *game, int keycode)
+void	unset_action(int keycode, t_data *game)
 {
 	printf("keycode recu on release: %d\n", keycode);
 	t_play	*p;

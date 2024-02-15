@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:54:00 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 00:16:32 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/15 11:32:10 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ void	init_game_mlx(t_data *game, char **argv)
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		error_msg(ERR_INIT);
-	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map->width * 64),
-			(game->map->height * 64), "So_Long");
 	game->moves = 0;
 	game->anim_idx = 0;
 	game->path = argv[1];
@@ -72,5 +70,9 @@ void	init_game_mlx(t_data *game, char **argv)
 	game->player = malloc(sizeof(t_play));
 	game->reset = false;
 	init_map(game->map, game);
-	init_player(game->player, game->map);
+	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map->width * 64),
+			(game->map->height * 64), "So_Long");
+	if (!game->win_ptr)
+		error_msg(ERR_WIN);
+	init_player(game, game->map);
 }

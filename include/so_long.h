@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 00:21:42 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/15 16:04:08 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <time.h>
+# include <sys/time.h>
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include <stdbool.h>
@@ -90,21 +91,23 @@ typedef struct s_map
 
 typedef struct s_data
 {
-	int		moves;
-	int		anim_idx;
-	char	*path;
-	char	**cpy_map;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*env[8];
-	void	*obj[2];
-	void	*door[2];
-	void	*p[12];
-	void	*p_mv[16];
-	void	*p_atk[46];
-	bool	reset;
-	t_map	*map;
-	t_play	*player;
+	int			fps;
+	int			moves;
+	int			anim_idx;
+	char		*path;
+	char		**cpy_map;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*env[8];
+	void		*obj[2];
+	void		*door[2];
+	void		*p[12];
+	void		*p_mv[16];
+	void		*p_atk[46];
+	bool		reset;
+	t_map		*map;
+	t_play		*player;
+	long long	last_time;
 }	t_data;
 
 //main
@@ -113,8 +116,18 @@ void	init_game_mlx(t_data *game, char **argv);
 int		valid_map(t_map *map);
 void	init_sprites(t_data *game);
 
+int		run_loop(t_data *game);
+
+//map
+int		check_fill(t_map *map, t_pos *exit);
+int		get_height(t_map *map);
+int		get_width(t_map *map);
+void	exit_pos(t_map *map);
+
 //keycode
 void	key_hooks(t_data *game);
+void	set_action(int keycode, t_data *game);
+void	unset_action(int keycode, t_data *game);
 
 //errors
 void	error_msg(char *msg);
@@ -122,6 +135,9 @@ void	error_map(char *msg, int err);
 char	free_and_alloc(char *str);
 
 //utils
-
+int		**allocate_tab_memset(t_map *map);
+void	print_map(t_map *map);
+void	print_visited(int **visited, int height, int width);
+void	display_pond(t_data *game, t_map *map, size_t len);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 21:59:06 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/14 22:34:20 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/15 11:39:35 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ static char	*path_to(char *category_sprite, int nb)
 	char	*str1;
 
 	num = ft_itoa(nb);
-	str = ft_strjoin("./xpm/", category_sprite);
+	str = ft_strjoin("xpm/", category_sprite);
 	str1 = ft_strjoin(str, "/");
 	free(str);
 	str = ft_strjoin(str1, category_sprite);
 	free(str1);
 	str1 = ft_strjoin(str, "_");
 	free(str);
-	str = ft_strjoin(str1, nb);
+	str = ft_strjoin(str1, num);
 	free(str1);
 	str1 = ft_strjoin(str, ".xpm");
 	free(str);
-	free(nb);
+	free(num);
 	return (str1);
 }
 

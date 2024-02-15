@@ -6,11 +6,25 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:35:50 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/14 23:22:51 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/15 11:24:17 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+//close the window
+static int	close_hk(int keycode, t_data *game)
+{
+	if (keycode == 0)
+	{
+		mlx_destroy_image(game->mlx_ptr, game->win_ptr);
+	}
+	//free_and_destroy(game);
+	mlx_destroy_image(game->mlx_ptr, game->win_ptr);
+	free(game->mlx_ptr);
+	exit (EXIT_SUCCESS);
+	return (0);
+}
 
 //on pressure
 static int	key_press(int keycode, t_data *game)
@@ -26,24 +40,11 @@ static int	key_up(int keycode, t_data *game)
 	printf("keycode envoye dans key_up: %d\n", keycode);
 	if (keycode == 53)
 		close_hk(keycode, game);
-	else if (keycode == 15)
-		reset_game(game);
+	//else if (keycode == 15)
+		//reset_game(game);
 	else
 		unset_action(keycode, game);
 	return (0);
-}
-
-//close the window
-static void	close_hk(int keycode, t_data *game)
-{
-	if (keycode == 0)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->win_ptr);
-	}
-	free_and_destroy(game);
-	mlx_destroy(game->mlx_ptr, game->win_ptr);
-	free(game->mlx_ptr);
-	exit (EXIT_SUCCESS);
 }
 
 //handle the pression on the keyboard

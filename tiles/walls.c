@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/14 18:49:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 11:46:02 by bwach            ###   ########.fr       */
+/*   Created: 2024/02/15 14:53:40 by bwach             #+#    #+#             */
+/*   Updated: 2024/02/15 15:49:02 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	main(int argc, char **argv)
+void	forest(t_data *game, t_map *m)
 {
-	t_data	game;
+	size_t	len;
 
-	//srand_(time(NULL));
-	if (argc != 2)
-		error_msg(ERR_ARG);
-	init_game_mlx(&game, argv);
-	init_sprites(&game);
-	print_map(game.map);
-	key_hooks(&game);
-	mlx_loop_hook(game.mlx_ptr, run_loop, &game);
-	mlx_loop(game.mlx_ptr);
-	return (EXIT_SUCCESS);
+	len = 0;
+	while (m->map[len / m->width])
+	{
+		if (m->map[len / m->width][len % m->width] == '1')
+			draw_pic((len % m->width) * 64, (len / m->width) * 64,
+				game->env[0], game);
+	}
+	len++;
 }
