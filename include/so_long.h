@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 16:04:08 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 00:08:42 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define ERR_INIT "Error:\nInit of map FAILED or NULL"
 # define ERR_WIN "Error:\nCreation of the window: FAILED or NULL"
 # define ERR_ALLOC "Error:\nAllocation of memory: FAILED or NULL"
+# define ERR_CPY "Error:\nCopying the og map into the cpy failed!"
 
 # define ERR_MAP "Error:\nThere is an error within the map\n"
 # define POS_NOT_FOUND "Error:\n Position of the item not found\n"
@@ -81,6 +82,7 @@ typedef struct s_play
 typedef struct s_map
 {
 	char	**map;
+	int		**walls_sp;
 	int		width;
 	int		height;
 	int		fd;
@@ -111,33 +113,39 @@ typedef struct s_data
 }	t_data;
 
 //main
-int		main(int argc, char **argv);
-void	init_game_mlx(t_data *game, char **argv);
-int		valid_map(t_map *map);
-void	init_sprites(t_data *game);
+int			main(int argc, char **argv);
+void		init_game_mlx(t_data *game, char **argv);
+int			valid_map(t_map *map);
+void		init_sprites(t_data *game);
 
-int		run_loop(t_data *game);
+long long	time_now(void);
+void		frame_per_second(t_data *game);
+int			run_loop(t_data *game);
+void		draw_pic(int x, int y, void *sprite, t_data *game);
 
 //map
-int		check_fill(t_map *map, t_pos *exit);
-int		get_height(t_map *map);
-int		get_width(t_map *map);
-void	exit_pos(t_map *map);
+int			check_fill(t_map *map, t_pos *exit);
+int			get_height(t_map *map);
+int			get_width(t_map *map);
+void		exit_pos(t_map *map);
+
+//sprite
+void		environment(t_data *game, t_map *m);
+void		forest(t_data *game, t_map *m);
 
 //keycode
-void	key_hooks(t_data *game);
-void	set_action(int keycode, t_data *game);
-void	unset_action(int keycode, t_data *game);
+void		key_hooks(t_data *game);
+void		set_action(int keycode, t_data *game);
+void		unset_action(int keycode, t_data *game);
 
 //errors
-void	error_msg(char *msg);
-void	error_map(char *msg, int err);
-char	free_and_alloc(char *str);
+void		error_msg(char *msg);
+void		error_map(char *msg, int err);
+char		free_and_alloc(char *str);
 
 //utils
-int		**allocate_tab_memset(t_map *map);
-void	print_map(t_map *map);
-void	print_visited(int **visited, int height, int width);
-void	display_pond(t_data *game, t_map *map, size_t len);
+int			**allocate_tab_memset(t_map *map);
+void		print_map(t_map *map);
+void		print_visited(int **visited, int height, int width);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 14:45:15 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 11:54:07 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 00:09:57 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	frame_per_second(t_data *game)
 	{
 		game->fps = 60 / (actual_time - game->last_time);
 		game->last_time = actual_time;
-	}	
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:49:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 11:46:02 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 02:15:57 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_data	game;
 
-	//srand_(time(NULL));
+	srand(time(NULL));
 	if (argc != 2)
 		error_msg(ERR_ARG);
 	init_game_mlx(&game, argv);

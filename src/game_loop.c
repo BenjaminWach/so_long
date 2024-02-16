@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 15:57:04 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 02:19:11 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,19 @@ static void	player_position(t_data *game)
 	p->d[1] = p->hg[1] + 64;
 }
 
+static char	**copying_map(t_map *map, char **cpy)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		ft_memcpy(cpy[i], map->map[i], map->width * sizeof(char));
+		i++;
+	}
+	return (cpy);
+}
+
 int	run_loop(t_data *game)
 {
 	long long	act_time;
@@ -46,11 +59,22 @@ int	run_loop(t_data *game)
 	diff = act_time - game->last_time;
 	if (diff > 16)
 	{
+		if (game->reset)
+		{
+			game->reset = false;
+			copying_map(game->map, game->cpy_map);
+			if (!game->map->walls_sp)
+				error_msg(ERR_CPY);
+		}
 		frame_per_second(game);
+		printf("sa sent pas bon\n");
 		mlx_clear_window(game->mlx_ptr, game->win_ptr);
+		printf("sa sent pas bon\n");
 		player_position(game);
+		printf("sa sent pas bon\n");
 		environment(game, game->map);
-		forest(game);
+		printf("sa sent pas bon\n");
+		forest(game, game->map);
 		//chest(game);
 		//player(game);
 		//hud(game);

@@ -6,7 +6,7 @@
 #    By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 13:26:01 by bwach             #+#    #+#              #
-#    Updated: 2024/02/15 16:02:36 by bwach            ###   ########.fr        #
+#    Updated: 2024/02/16 00:05:47 by bwach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,8 @@ OBJ_M		=	$(MPATH:.c=.o)
 LBFT_DIR	=	libft/
 LBFT		=	libft/libft.a
 
-UTIL_SRCS	=	error_gest.c key_gest.c map_gest.c map_data.c map_data_utils.c sprite_pond.c \
-				fps.c
+UTIL_SRCS	=	error_gest.c key_gest.c map_gest.c map_data.c map_data_utils.c \
+				fps.c display_sprites.c
 UTIL_DIR	=	utils/
 UTILS 		=	$(addprefix $(UTIL_DIR), $(UTIL_SRCS))
 OBJ_U		=	$(UTILS:.c=.o)

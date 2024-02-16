@@ -6,11 +6,35 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:54:00 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 11:32:10 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 01:47:57 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+static int	**random_trees_sprites(t_map *map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	map->walls_sp = malloc(map->height * sizeof(int *));
+	while (y < map->height)
+	{
+		map->walls_sp[y] = malloc(map->width * sizeof(int));
+		x = 0;
+		while (x < map->width)
+		{
+			if (map->map[y][x] == '1')
+				map->walls_sp[y][x] = rand() % 2;
+			else
+				map->walls_sp[y][x] = -1;
+			x++;
+		}
+		y++;
+	}
+	return (map->walls_sp);
+}
 
 static void	init_map(t_map *map, t_data *game)
 {
@@ -34,9 +58,10 @@ static void	init_map(t_map *map, t_data *game)
 	map->height = get_height(map);
 	if (valid_map(map) != 0)
 	{
-		free(map->map);
+		//free_map(map->map);
 		exit (-1);
 	}
+	map->walls_sp = random_trees_sprites(map);
 }
 
 static int	init_player(t_data *game, t_map *map)
@@ -69,6 +94,7 @@ void	init_game_mlx(t_data *game, char **argv)
 	game->map = malloc(sizeof(t_map));
 	game->player = malloc(sizeof(t_play));
 	game->reset = false;
+	game->last_time = 0;
 	init_map(game->map, game);
 	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map->width * 64),
 			(game->map->height * 64), "So_Long");
