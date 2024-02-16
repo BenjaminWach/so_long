@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/16 02:19:11 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 14:39:38 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,13 @@ int	run_loop(t_data *game)
 				error_msg(ERR_CPY);
 		}
 		frame_per_second(game);
-		printf("sa sent pas bon\n");
 		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-		printf("sa sent pas bon\n");
 		player_position(game);
-		printf("sa sent pas bon\n");
 		environment(game, game->map);
-		printf("sa sent pas bon\n");
 		forest(game, game->map);
-		//chest(game);
-		//player(game);
+		chest(game, game->map);
+		castle(game, game->map);
+		player(game);
 		//hud(game);
 	}
 	return (1);

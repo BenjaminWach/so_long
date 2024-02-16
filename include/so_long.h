@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/16 00:08:42 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 15:11:01 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,13 @@ void		frame_per_second(t_data *game);
 int			run_loop(t_data *game);
 void		draw_pic(int x, int y, void *sprite, t_data *game);
 
+//player
+void		player(t_data *game);
+void		move_right(t_data *game, t_play *p);
+void		move_left(t_data *game, t_play *p);
+void		move_up(t_data *game, t_play *p);
+void		move_dwn(t_data *game, t_play *p);
+
 //map
 int			check_fill(t_map *map, t_pos *exit);
 int			get_height(t_map *map);
@@ -132,6 +139,8 @@ void		exit_pos(t_map *map);
 //sprite
 void		environment(t_data *game, t_map *m);
 void		forest(t_data *game, t_map *m);
+void		chest(t_data *game, t_map *m);
+void		castle(t_data *game, t_map *m);
 
 //keycode
 void		key_hooks(t_data *game);

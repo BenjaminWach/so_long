@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:35:50 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 11:24:17 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 13:56:01 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,8 @@
 //close the window
 static int	close_hk(int keycode, t_data *game)
 {
-	if (keycode == 0)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->win_ptr);
-	}
-	//free_and_destroy(game);
-	mlx_destroy_image(game->mlx_ptr, game->win_ptr);
-	free(game->mlx_ptr);
+	if (keycode == 53)
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	exit (EXIT_SUCCESS);
 	return (0);
 }
@@ -50,7 +45,7 @@ static int	key_up(int keycode, t_data *game)
 //handle the pression on the keyboard
 void	key_hooks(t_data *game)
 {
-	mlx_hook(game->win_ptr, 17, 1L << 17, close_hk, game);
+	mlx_hook(game->win_ptr, 17, (1L << 17), close_hk, game);
 	mlx_hook(game->win_ptr, 2, 1L << 0, key_press, game);
 	mlx_hook(game->win_ptr, 3, 1L << 1, key_up, game);
 }

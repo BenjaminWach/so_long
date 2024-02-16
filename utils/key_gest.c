@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:41:10 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 11:18:02 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 10:44:20 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	fetch_action_keys(int keycode)
 {
-	printf("on donne le code\n");
 	if (keycode == KEY_LEFT || keycode == ARROW_LEFT)
 		return (1);
 	else if (keycode == KEY_RIGHT || keycode == ARROW_RIGHT)
