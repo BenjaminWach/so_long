@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:54:00 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/16 01:47:57 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/17 01:08:57 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	init_map(t_map *map, t_data *game)
 		error_msg(ERR_INIT);
 	map->width = get_width(map);
 	map->height = get_height(map);
+	map->total_obj = 0;
 	if (valid_map(map) != 0)
 	{
 		//free_map(map->map);

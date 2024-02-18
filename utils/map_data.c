@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:51:18 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/12 11:35:49 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/17 01:24:46 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ void	exit_pos(t_map *map)
 	map->exit->y = -1;
 }
 
-static void	dfs(t_map *map, t_pos node, int **visited, int *total_obj)
+static void	dfs(t_map *map, t_pos node, int **visited, int *total_player)
 {
-	//printf("Coord.pos.X: %d, pos.Y: %d\n", node.x, node.y);
 	if (node.x < 0 || node.x >= map->width || node.y < 0
 		|| node.y >= map->height)
 		return ;
@@ -72,11 +71,13 @@ static void	dfs(t_map *map, t_pos node, int **visited, int *total_obj)
 		return ;
 	visited[node.y][node.x] = 1;
 	if (map->map[node.y][node.x] == 'C')
-		(*total_obj)++;
-	dfs(map, (t_pos){node.x, node.y - 1}, visited, total_obj);
-	dfs(map, (t_pos){node.x, node.y + 1}, visited, total_obj);
-	dfs(map, (t_pos){node.x - 1, node.y}, visited, total_obj);
-	dfs(map, (t_pos){node.x + 1, node.y}, visited, total_obj);
+		map->total_obj++;
+	if (map->map[node.y][node.x] == 'P')
+		(*total_player)++;
+	dfs(map, (t_pos){node.x, node.y - 1}, visited, total_player);
+	dfs(map, (t_pos){node.x, node.y + 1}, visited, total_player);
+	dfs(map, (t_pos){node.x - 1, node.y}, visited, total_player);
+	dfs(map, (t_pos){node.x + 1, node.y}, visited, total_player);
 }
 
 int	check_fill(t_map *map, t_pos *exit)
@@ -84,13 +85,19 @@ int	check_fill(t_map *map, t_pos *exit)
 	int		**visited;
 	int		y;
 	int		x;
-	int		total_obj;
+	int		total_player;
 
 	y = 0;
-	total_obj = 0;
+	total_player = 0;
 	visited = allocate_tab_memset(map);
-	dfs(map, *exit, visited, &total_obj);
-	while (y < map->height)
+	dfs(map, *exit, visited, &total_player);
+	printf("objets trouves: %d / %d\n", map->total_obj, map->nb_obj);
+	if (map->nb_obj != map->total_obj || total_player < 1)
+		return (-1);
+	free(visited);
+	return (0);
+}
+/*while (y < map->height)
 	{
 		x = 0;
 		while (x < map->width)
@@ -100,9 +107,4 @@ int	check_fill(t_map *map, t_pos *exit)
 			x++;
 		}
 		y++;
-	}
-	free(visited);
-	if (map->nb_obj != total_obj)
-		return (-1);
-	return (0);
-}
+	}*/

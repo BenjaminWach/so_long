@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:53:40 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/16 02:59:01 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/16 20:03:22 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static void	display_pond(t_data *game, t_map *map, size_t len)
 		draw_pic(x * 64, (y + 1) * 64, game->env[4], game);
 		draw_pic((x + 1) * 64, (y + 1) * 64, game->env[5], game);
 	}
+	else
+		draw_pic(x * 64, y * 64, game->env[0], game);
 }
 
 static void	random_walls(t_data *game, t_map *m, size_t len)

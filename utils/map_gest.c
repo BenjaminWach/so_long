@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:24:15 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/14 21:47:57 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/19 00:30:33 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static int	basic_map(t_map *map)
 	len = 0;
 	while (map->map[len / map->width])
 	{
+		if (!ft_strchr("CEP01", map->map[len / map->width][len % map->width]))
+			error_map(ERR_CAR, 0);
 		if (map->map[len / map->width][len % map->width] == 'E')
 			end++;
 		if (map->map[len / map->width][len % map->width] == 'C')

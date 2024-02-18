@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/16 14:39:38 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/18 19:25:35 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ hg (x, y) ------------ hd (x + 64, y)
   |                           |
 g (x, y + 64) -------- d (x + 64, y + 64)
 */
+
+static void	update_hitbox(t_play *p)
+{
+	p->top_l[0] = p->hg[0] - 26 / 2;
+	p->top_l[1] = p->hg[1] - 27 / 2;
+	p->top_r[0] = p->hd[0] - 26 / 2;
+	p->top_r[1] = p->hd[1] - 27 / 2;
+	p->bot_l[0] = p->g[0] - 26 / 2;
+	p->bot_l[1] = p->g[1] - 27 / 2;
+	p->bot_r[0] = p->d[0] - 26 / 2;
+	p->bot_r[1] = p->d[1] - 27 / 2;
+}
+
 static void	player_position(t_data *game)
 {
 	t_play	*p;
@@ -35,6 +48,7 @@ static void	player_position(t_data *game)
 	p->g[1] = p->hg[1] + 64;
 	p->d[0] = p->hg[0] + 64;
 	p->d[1] = p->hg[1] + 64;
+	update_hitbox(p);
 }
 
 static char	**copying_map(t_map *map, char **cpy)
@@ -74,7 +88,6 @@ int	run_loop(t_data *game)
 		chest(game, game->map);
 		castle(game, game->map);
 		player(game);
-		//hud(game);
 	}
 	return (1);
 }

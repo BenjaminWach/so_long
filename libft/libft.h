@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:01:39 by bwach             #+#    #+#             */
-/*   Updated: 2024/01/30 14:16:46 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/17 17:04:43 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -79,5 +80,18 @@ size_t	ft_strlcpy_gnl(char *dst, char *src, size_t dstsize);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 char	*ft_substr_gnl(char *s, unsigned int start, size_t len);
 void	*ft_memset_gnl(void *b, int c, size_t len);
+
+//printf
+int		ft_putchar(char c);
+int		ft_printf(const char *str, ...);
+int		ft_print_hex(unsigned int nbr, const char conversion);
+int		ft_print_ptr(unsigned long long ptr);
+void	ft_putptr(unsigned long long num);
+int		ft_print_percent(void);
+int		ft_print_unsigned(unsigned int nbr);
+void	ft_putstr(char *str);
+int		ft_printstr(char *str);
+int		ft_print_percent(void);
+int		ft_printnbr(int n);
 
 #endif

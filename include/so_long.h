@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/16 15:11:01 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/19 00:32:44 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # ifndef BUFFERSIZE
 #  define BUFFERSIZE 42
 # endif
+
+# define RED 				"\033[1;31m"
+# define RESET 				"\033[0m"
+
+# define HPX 15
+# define EXP 20
+# define MVX 9
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -39,8 +46,9 @@
 # define POS_NOT_FOUND "Error:\n Position of the item not found\n"
 # define ERR_BASE_MAP "Error:\nNeed at least 1 exit, 1 character, 1 conso\n"
 # define ERR_MAP_SIZE "Error:\nMap have wrong dimensions(x, y)\n"
-# define ERR_NO_END "Error:\nCannot access either objects or the exit:\n"
+# define ERR_NO_END "Error:\nCannot access either objects or the exit\n"
 # define ERR_NO_EXIT "No exit found.\n"
+# define ERR_CAR "Error: \nDisallow any characters others then: C,E,P,0,1.\n"
 
 //Keycodes
 # define KEY_LEFT 0
@@ -75,7 +83,15 @@ typedef struct s_play
 	int		g[2];
 	int		d[2];
 	int		ac[3];
+	int		top_l[2];
+	int		top_r[2];
+	int		bot_l[2];
+	int		bot_r[2];
 	int		direction;
+	int		up;
+	int		right;
+	int		down;
+	int		left;
 	bool	moving;
 }	t_play;
 
@@ -87,6 +103,7 @@ typedef struct s_map
 	int		height;
 	int		fd;
 	int		nb_obj;
+	int		total_obj;
 	char	*str;
 	t_pos	*exit;
 }	t_map;
