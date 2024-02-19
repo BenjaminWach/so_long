@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/19 00:32:44 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/19 14:44:15 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ void		init_game_mlx(t_data *game, char **argv);
 int			valid_map(t_map *map);
 void		init_sprites(t_data *game);
 
+int			close_hk(int keycode, t_data *game);
+
 long long	time_now(void);
 void		frame_per_second(t_data *game);
 int			run_loop(t_data *game);
@@ -142,10 +144,9 @@ void		draw_pic(int x, int y, void *sprite, t_data *game);
 
 //player
 void		player(t_data *game);
-void		move_right(t_data *game, t_play *p);
-void		move_left(t_data *game, t_play *p);
-void		move_up(t_data *game, t_play *p);
-void		move_dwn(t_data *game, t_play *p);
+void		mini_raycasting(t_data *game, t_map *map);
+void		character_mvt(t_data *game, t_play *p);
+void		mvt_count(t_data *game);
 
 //map
 int			check_fill(t_map *map, t_pos *exit);

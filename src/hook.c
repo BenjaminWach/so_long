@@ -6,14 +6,14 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:35:50 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/18 22:07:32 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/19 14:21:11 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
 //close the window
-static int	close_hk(int keycode, t_data *game)
+int	close_hk(int keycode, t_data *game)
 {
 	if (keycode == 53)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
