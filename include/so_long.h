@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/19 14:44:15 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/19 23:43:31 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,10 @@ void		player(t_data *game);
 void		mini_raycasting(t_data *game, t_map *map);
 void		character_mvt(t_data *game, t_play *p);
 void		mvt_count(t_data *game);
+
+void		display_character(t_data *game, t_play *p);
+void		display_idle(t_data *game, t_play *p);
+int			get_walk_sprite(int *last, t_data *game);
 
 //map
 int			check_fill(t_map *map, t_pos *exit);

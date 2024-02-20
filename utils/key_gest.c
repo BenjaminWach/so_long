@@ -6,12 +6,22 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:41:10 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/16 10:44:20 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/20 01:10:30 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+/*
+# define KEY_LEFT 0
+# define KEY_RIGHT 2
+# define KEY_UP 13
+# define KEY_DOWN 1
+# define KEY_RST 15
+# define ARROW_LEFT 123
+# define ARROW_RIGHT 124
+# define ARROW_UP 126
+# define ARROW_DW 125*/
 static int	fetch_action_keys(int keycode)
 {
 	if (keycode == KEY_LEFT || keycode == ARROW_LEFT)

@@ -6,7 +6,7 @@
 #    By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 13:26:01 by bwach             #+#    #+#              #
-#    Updated: 2024/02/19 14:46:31 by bwach            ###   ########.fr        #
+#    Updated: 2024/02/19 23:37:10 by bwach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ MPATH_DIR	=	src/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
 
-PLAYER_SRCS	=	player.c moves.c display_player.c
+PLAYER_SRCS	=	player.c moves.c display_player.c display_moves.c
 PLAYER_DIR	=	player/
 PLAYER		=	$(addprefix $(PLAYER_DIR), $(PLAYER_SRCS))
 OBJ_P		=	$(PLAYER:.c=.o)

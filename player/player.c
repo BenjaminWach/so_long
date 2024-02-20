@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:42:47 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/19 14:42:50 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/20 02:33:25 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	player(t_data *game)
 	mini_raycasting(game, game->map);
 	character_mvt(game, p);
 	mvt_count(game);
-	//display_character(game, p);
+	display_character(game, p);
 }
