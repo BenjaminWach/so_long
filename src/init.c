@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:54:00 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 04:57:57 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/20 13:48:51 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static int	init_player(t_data *game, t_map *map)
 	size_t	len;
 
 	len = 0;
-	game->player->direction = 1;
 	game->player->moving = false;
 	while (map->map[len / map->width])
 	{
@@ -78,6 +77,11 @@ static int	init_player(t_data *game, t_map *map)
 		{
 			game->player->pos[0] = (len % map->width) * 64;
 			game->player->pos[1] = (len / map->width) * 64 - 1;
+			if (map->map[len / map->width][(len % map->width) - 1] == '1')
+				game->player->direction = 1;
+			else
+				game->player->direction = 0;
+			return (1);
 		}
 		len++;
 	}

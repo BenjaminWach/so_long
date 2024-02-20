@@ -7,7 +7,7 @@ static char *result[] = {
 "X c #232323",
 "o c #272020",
 "O c #2C2C2C",
-"+ c #72751B",
+"+ c None",
 "@ c #E6E6E6",
 "# c white",
 "$ c None",

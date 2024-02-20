@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/19 23:43:31 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/20 13:17:13 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define HPX 15
 # define EXP 20
-# define MVX 9
+# define MVX 6
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -88,10 +88,6 @@ typedef struct s_play
 	int		bot_l[2];
 	int		bot_r[2];
 	int		direction;
-	int		up;
-	int		right;
-	int		down;
-	int		left;
 	bool	moving;
 }	t_play;
 

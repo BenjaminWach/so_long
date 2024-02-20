@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:35:44 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 03:11:23 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/20 14:41:16 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,24 @@
 void	display_idle(t_data *game, t_play *p)
 {
 	static int	i;
-	static int	anim;
+	static int	counter;
 
-	if (anim == 5)
+	if (counter == 3)
 	{
-		anim = 0;
 		if (p->direction)
 		{
-			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,				
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 				game->p[i], p->pos[0], p->pos[1]);
-			i = (i + 1) % 6;
 		}
-		else if (!p->direction)
+		else
 		{
 			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 				game->p[i + 6], p->pos[0], p->pos[1]);
-			i = (i + 1) % 6;
 		}
+		i = (i + 1) % 6;
 	}
 	else
-		anim++;
+		counter++;
 }
 
 int	get_walk_sprite(int *last, t_data *game)

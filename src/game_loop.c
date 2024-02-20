@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 04:27:43 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/20 15:48:51 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ g (x, y + 64) -------- d (x + 64, y + 64)
 
 static void	update_hitbox(t_play *p)
 {
-	p->top_l[0] = p->hg[0] + 14;
-	p->top_l[1] = p->hg[1] + 14;
-	p->top_r[0] = p->hd[0];
+	p->top_l[0] = p->hg[0] + 15;
+	p->top_l[1] = p->hg[1] + 15;
+	p->top_r[0] = p->hd[0] - 15;
 	p->top_r[1] = p->hd[1];
-	p->bot_l[0] = p->g[0];
-	p->bot_l[1] = p->g[1];
-	p->bot_r[0] = p->d[0];
+	p->bot_l[0] = p->g[0] + 15;
+	p->bot_l[1] = p->g[1] + 15;
+	p->bot_r[0] = p->d[0] - 15;
 	p->bot_r[1] = p->d[1];
 }
 
@@ -71,7 +71,7 @@ int	run_loop(t_data *game)
 
 	act_time = time_now();
 	diff = act_time - game->last_time;
-	if (diff > 32)
+	if (diff > 31)
 	{
 		if (game->reset)
 		{
