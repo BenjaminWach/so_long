@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:54:00 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 00:32:05 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 16:24:15 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	init_map(t_map *map, t_data *game)
 		error_msg(ERR_FILE);
 	map->str = malloc(sizeof(char) * 10000);
 	if (!map->str)
-		free_and_alloc(map->str);
+		exit (EXIT_FAILURE);
 	bytes_rd = read(map->fd, map->str, 10000);
 	if (bytes_rd < 1)
 		error_msg(ERR_FILE);
@@ -59,7 +59,7 @@ static void	init_map(t_map *map, t_data *game)
 	map->total_obj = 0;
 	if (valid_map(map) != 0)
 	{
-		//free_map(map->map);
+		free_array(map->map, 0);
 		exit (-1);
 	}
 	map->walls_sp = random_trees_sprites(map);
@@ -78,9 +78,9 @@ static int	init_player(t_data *game, t_map *map)
 			game->player->pos[0] = (len % map->width) * 64;
 			game->player->pos[1] = (len / map->width) * 64 - 1;
 			if (map->map[len / map->width][(len % map->width) - 1] == '1')
-				game->player->direction = 1;
-			else
 				game->player->direction = 0;
+			else
+				game->player->direction = 1;
 			return (1);
 		}
 		len++;

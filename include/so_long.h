@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 02:36:26 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 16:15:17 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,11 +172,15 @@ void		unset_action(int keycode, t_data *game);
 //errors
 void		error_msg(char *msg);
 void		error_map(char *msg, int err);
-char		free_and_alloc(char *str);
+//char		free_and_exit(char *str);
 
 //utils
 int			**allocate_tab_memset(t_map *map);
 void		print_map(t_map *map);
 void		print_visited(int **visited, int height, int width);
 
+//free
+void		free_und_exit(t_data *game, t_map *m);
+int			free_array(char **clean, int hgt);
+int			free_array_ints(int **clean, int hgt);
 #endif

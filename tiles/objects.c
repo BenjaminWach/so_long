@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:20:15 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 00:38:11 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 14:31:59 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,23 @@ static void	interaction(t_map *map, int x, int y)
 static void	interaction_chest(t_data *game, t_map *m)
 {
 	t_play	*p;
+	int		of;
+
+	of = 14;
+	p = game->player;
+	if (m->map[(p->top_l[1] + of) / 64][(p->top_l[0] + of) / 64] == 'C')
+		interaction(m, (p->top_l[0] / 64), (p->top_l[1] / 64));
+	else if (m->map[(p->top_r[1] + of) / 64][(p->top_r[0] - of) / 64] == 'C')
+		interaction(m, (p->top_r[0] / 64), (p->top_r[1] / 64));
+	else if (m->map[(p->bot_l[1] - of) / 64][(p->bot_l[0] - of) / 64] == 'C')
+		interaction(m, (p->bot_l[0] / 64), (p->bot_l[1] / 64));
+	else if (m->map[(p->bot_r[1] - of) / 64][(p->bot_r[0] - of) / 64] == 'C')
+		interaction(m, (p->bot_r[0] / 64), (p->bot_r[1] / 64));
+}
+
+/*static void	interaction_chest(t_data *game, t_map *m)
+{
+	t_play	*p;
 
 	p = game->player;
 	if (m->map[(p->top_l[1]) / 64][(p->top_l[0]) / 64] == 'C')
@@ -34,7 +51,7 @@ static void	interaction_chest(t_data *game, t_map *m)
 		interaction(m, (p->bot_l[0] / 64), (p->bot_l[1] / 64));
 	else if (m->map[(p->bot_r[1]) / 64][(p->bot_r[0]) / 64] == 'C')
 		interaction(m, (p->bot_r[0] / 64), (p->bot_r[1] / 64));
-}
+}*/
 
 static void	draw_items(t_data *game, t_map *m, int len)
 {
@@ -63,6 +80,4 @@ void	chest(t_data *game, t_map *m)
 	len = 0;
 	interaction_chest(game, m);
 	draw_items(game, m, len);
-	//if (m->nb_obj == 0)
-		//free_array(m->taken);
 }

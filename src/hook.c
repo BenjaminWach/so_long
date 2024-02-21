@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:35:50 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 01:32:44 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 18:13:05 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 int	close_hk(int keycode, t_data *game)
 {
 	if (keycode == 53)
+	{
+		free_und_exit(game, game->map);
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	}
 	ft_printf(RED"\n\
 █████████████████████████████████████████████████████████████████████\n\
 ██                                                                 ██\n\
@@ -35,7 +38,7 @@ int	close_hk(int keycode, t_data *game)
 //on pressure
 static int	key_press(int keycode, t_data *game)
 {
-	//printf("keycode envoye: %d\n", keycode);
+	printf("keycode envoye: %d\n", keycode);
 	set_action(keycode, game);
 	return (0);
 }
@@ -43,7 +46,7 @@ static int	key_press(int keycode, t_data *game)
 //on release
 static int	key_up(int keycode, t_data *game)
 {
-	//printf("keycode envoye dans key_up: %d\n", keycode);
+	printf("keycode envoye dans key_up: %d\n", keycode);
 	if (keycode == 53)
 		close_hk(keycode, game);
 	//else if (keycode == 15)
