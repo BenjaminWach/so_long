@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 22:57:23 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 21:37:46 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ static char	**copying_map(t_map *map, char **cpy)
 	return (cpy);
 }
 
-static void draw_hitbox(t_data *game, t_play *player)
+static void	draw_hitbox(t_data *game, t_play *player)
 {
-    int x, y;
+	int x, y;
 
     // Dessiner le bord supérieur de la hitbox
     for (x = player->top_l[0]; x <= player->top_r[0]; x++)
-        mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, player->top_l[1], 0xFFFFFF);
+		 mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, player->top_l[1], 0xFFFFFF);
 
     // Dessiner le bord inférieur de la hitbox
     for (x = player->bot_l[0]; x <= player->bot_r[0]; x++)

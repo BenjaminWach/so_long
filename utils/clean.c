@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:44:49 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 18:08:49 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/22 00:25:40 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,35 +36,6 @@ static void	clear_map(t_map *m)
 		free(m->exit);
 		m->exit = NULL;
 	}
-}
-
-static void	clear_sprites(t_data *game, int i)
-{
-	while (i < 8)
-	{
-		free(game->env[i]);
-		i++;
-	}
-	i = 0;
-	while (i < 2)
-	{
-		free(game->obj[i]);
-		free(game->door[i]);
-		i++;
-	}
-	i = 0;
-	while (i < 12)
-	{
-		free(game->p[i]);
-		i++;
-	}
-	i = 0;
-	while (i < 16)
-	{
-		free(game->p_mv[i]);
-		i++;
-	}
-	i = 0;
 }
 
 int	free_array_ints(int **clean, int hgt)
@@ -111,7 +82,8 @@ void	free_und_exit(t_data *game, t_map *m)
 	int	i;
 
 	i = 0;
-	clear_sprites(game, i);
+	free_array(game->cpy_map, m->height);
+	clear_sprites(game);
 	if (m != NULL)
 	{
 		clear_map(m);

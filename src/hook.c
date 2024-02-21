@@ -6,20 +6,14 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:35:50 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 18:13:05 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/22 00:50:04 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-//close the window
-int	close_hk(int keycode, t_data *game)
+static void	print_loose(void)
 {
-	if (keycode == 53)
-	{
-		free_und_exit(game, game->map);
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	}
 	ft_printf(RED"\n\
 █████████████████████████████████████████████████████████████████████\n\
 ██                                                                 ██\n\
@@ -31,6 +25,19 @@ int	close_hk(int keycode, t_data *game)
 ██                                                                 ██\n\
 █████████████████████████████████████████████████████████████████████\n\n\
 "RESET);
+}
+
+//close the window
+int	close_hk(int keycode, t_data *game)
+{
+	if (keycode == 53)
+	{
+		free_und_exit(game, game->map);
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		print_loose();
+		exit (EXIT_FAILURE);
+	}
+	print_loose();
 	exit (EXIT_SUCCESS);
 	return (0);
 }

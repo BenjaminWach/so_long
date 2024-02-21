@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 16:15:17 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 23:42:14 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ typedef struct s_data
 	void		*door[2];
 	void		*p[12];
 	void		*p_mv[16];
-	void		*p_atk[46];
 	bool		reset;
 	t_map		*map;
 	t_play		*player;
@@ -183,4 +182,6 @@ void		print_visited(int **visited, int height, int width);
 void		free_und_exit(t_data *game, t_map *m);
 int			free_array(char **clean, int hgt);
 int			free_array_ints(int **clean, int hgt);
+void		clear_sprites(t_data *game);
+
 #endif
