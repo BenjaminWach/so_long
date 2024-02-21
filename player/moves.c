@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:11:19 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 13:16:47 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 02:13:36 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,24 @@ void	mvt_count(t_data *game)
 void	character_mvt(t_data *game, t_play *p)
 {
 	char	**map;
-	int		i;
-	int		j;
+	int		xg;
+	int		yg;
+	int		xd;
+	int		yd;
 
 	map = game->map->map;
-	j = p->pos[0] / 64;
-	i = p->pos[1] / 64;
+	xg = p->bot_l[0] / 64;
+	yg = p->bot_l[1] / 64;
+	xd = p->bot_r[0] / 64;
+	yd = p->bot_r[1] / 64;
 	if (!p)
 		close_hk(53, game);
-	if (p->ac[0] == 1 && map[i][j + 1] != '1')
-		p->pos[0] -= MVX;
-	else if (p->ac[0] == 2 && map[i][j - 1] != '1')
-		p->pos[0] += MVX;
-	else if (p->ac[0] == 4 && map[i - 1][j] != '1')
-		p->pos[1] -= MVX;
-	else if (p->ac[0] == 3 && map[i + 1][j] != '1')
-		p->pos[1] += MVX;
+	if (p->ac[0] == 1 && map[yd][xd + 1] != '1' && map[yg][xg + 1] != '1')
+		p->pos[0] -= 4;
+	else if (p->ac[0] == 2 && map[yg][xg - 1] != '1' && map[yd][xd - 1] != '1')
+		p->pos[0] += 4;
+	else if (p->ac[0] == 4 && map[yg - 1][xg] != '1' && map[yg - 1][xd] != '1')
+		p->pos[1] -= 4;
+	else if (p->ac[0] == 3 && map[yg + 1][xg] != '1' && map[yd + 1][xd] != '1')
+		p->pos[1] += 4;
 }

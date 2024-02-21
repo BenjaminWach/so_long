@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 13:17:13 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 02:36:26 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
 # include <stdbool.h>
 
 //Error_code
-# define ERR_ARG "Error:\nInvalid numbers of arguments: ./so_long 'map'" 
+# define ERR_ARG "Error:\nInvalid numbers of arguments: ./so_long 'map'"
+# define ERR_BER "Error:\nThe map file's type is not .ber" 
 # define ERR_FILE "Error:\nOpen: map file: FAILED or NULL"
 # define ERR_SPRITE_FILE "Error:\nXPM category not found"
 # define ERR_INIT "Error:\nInit of map FAILED or NULL"
@@ -82,7 +83,7 @@ typedef struct s_play
 	int		hd[2];
 	int		g[2];
 	int		d[2];
-	int		ac[3];
+	int		ac[2];
 	int		top_l[2];
 	int		top_r[2];
 	int		bot_l[2];
@@ -102,6 +103,7 @@ typedef struct s_map
 	int		total_obj;
 	char	*str;
 	t_pos	*exit;
+	int		**taken;
 }	t_map;
 
 typedef struct s_data
@@ -144,9 +146,11 @@ void		mini_raycasting(t_data *game, t_map *map);
 void		character_mvt(t_data *game, t_play *p);
 void		mvt_count(t_data *game);
 
+//sprite player
 void		display_character(t_data *game, t_play *p);
 void		display_idle(t_data *game, t_play *p);
-int			get_walk_sprite(int *last, t_data *game);
+int			get_walk_sprite(t_data *game);
+int			up_down(t_data *game);
 
 //map
 int			check_fill(t_map *map, t_pos *exit);

@@ -6,11 +6,24 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:49:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 04:58:12 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/20 21:46:49 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+static int	is_ber(char *ber)
+{
+	int	len;
+
+	len = ft_strlen(ber);
+	if (len < 4)
+		return (-1);
+	if (ft_strncmp(&ber[len - 4], ".ber", 4) == 0)
+		return (0);
+	else
+		return (-1);
+}
 
 int	main(int argc, char **argv)
 {
@@ -19,6 +32,8 @@ int	main(int argc, char **argv)
 	srand(time(NULL));
 	if (argc != 2)
 		error_msg(ERR_ARG);
+	if (is_ber(argv[1]) != 0)
+		error_msg(ERR_BER);
 	init_game_mlx(&game, argv);
 	init_sprites(&game);
 	print_map(game.map);

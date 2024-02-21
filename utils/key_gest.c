@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:41:10 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 15:02:12 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 02:36:04 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,6 @@ void	unset_action(int keycode, t_data *game)
 	p = game->player;
 	if (p->ac[0] == fetch_action_keys(keycode))
 		p->ac[0] = 0;
-	if (p->ac[1] == fetch_action_keys(keycode))
-		p->ac[1] = 0;
-	if (p->ac[0] == 0 || p->ac[1] != 0)
-	{
-		p->ac[0] = p->ac[1];
-		p->ac[1] = 0;
-	}
 	if (p->ac[2] == fetch_action_keys(keycode))
 		p->ac[2] = 0;
 	p->moving = false;
@@ -65,8 +58,6 @@ void	set_action(int keycode, t_data *game)
 	{
 		if (p->ac[0] == 0 || p->ac[0] == fetch_action_keys(keycode))
 			p->ac[0] = fetch_action_keys(keycode);
-		else if (p->ac[1] == 0 || p->ac[1] == fetch_action_keys(keycode))
-			p->ac[1] = fetch_action_keys(keycode);
 	}
 	else
 		p->ac[2] = fetch_action_keys(keycode);

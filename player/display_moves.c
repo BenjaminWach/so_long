@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:35:44 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 14:41:16 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 01:57:11 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,32 @@ void	display_idle(t_data *game, t_play *p)
 		counter++;
 }
 
-int	get_walk_sprite(int *last, t_data *game)
+int	get_walk_sprite(t_data *game)
 {
 	static int	i;
 
-	if (game->player->direction == 0)
+	if (game->player->direction == 1)
 	{
-		if (*last != 1)
-			i = 0;
-		else if (i >= 0 && i <= 7)
+		if (i >= 0 && i < 7)
 			i++;
 		else
 			i = 0;
 	}
-	else
+	else if (game->player->direction == 0)
 	{
-		if (*last != 1)
-			i = 8;
-		else if (i >= 8 && i <= 15)
+		i = 8;
+		if (i >= 8 && i < 15)
 			i++;
 		else
 			i = 8;
 	}
-	*last = 1;
 	return (i);
+}
+
+int	up_down(t_data *game)
+{
+	if (game->player->direction == 1)
+		return (0);
+	else
+		return (8);
 }

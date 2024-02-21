@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:54:00 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/20 13:48:51 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/21 00:32:05 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	init_game_mlx(t_data *game, char **argv)
 	game->reset = false;
 	game->last_time = 0;
 	init_map(game->map, game);
+	game->map->taken = allocate_tab_memset(game->map);
 	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map->width * 64),
 			(game->map->height * 64), "So_Long");
 	if (!game->win_ptr)
