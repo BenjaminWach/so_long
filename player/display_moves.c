@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:35:44 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 01:57:11 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/22 11:17:48 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	get_walk_sprite(t_data *game)
 	}
 	else if (game->player->direction == 0)
 	{
-		i = 8;
 		if (i >= 8 && i < 15)
 			i++;
 		else

@@ -6,13 +6,13 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 23:35:18 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/22 00:12:10 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/22 11:30:50 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	clear_env(t_data *game, int	i)
+static void	clear_env(t_data *game, int i)
 {
 	while (i < 8)
 	{
@@ -21,7 +21,7 @@ static void	clear_env(t_data *game, int	i)
 	}
 }
 
-static void	clear_obj(t_data *game, int	i)
+static void	clear_obj(t_data *game, int i)
 {
 	while (i < 2)
 	{

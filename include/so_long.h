@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 23:42:14 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/22 16:00:06 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # endif
 
 # define RED 				"\033[1;31m"
+# define GREEN				"\033[1;32m"
 # define RESET 				"\033[0m"
 
 # define HPX 15
@@ -83,7 +84,7 @@ typedef struct s_play
 	int		hd[2];
 	int		g[2];
 	int		d[2];
-	int		ac[2];
+	int		action;
 	int		top_l[2];
 	int		top_r[2];
 	int		bot_l[2];

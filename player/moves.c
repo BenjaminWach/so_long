@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:11:19 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 11:55:47 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/22 11:38:34 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	character_mvt(t_data *game, t_play *p)
 	map = game->map->map;
 	if (!p)
 		close_hk(53, game);
-	if (p->ac[0] == 1)
-		p->pos[0] -= 4;
-	else if (p->ac[0] == 2)
-		p->pos[0] += 4;
-	else if (p->ac[0] == 4)
-		p->pos[1] -= 4;
-	else if (p->ac[0] == 3)
-		p->pos[1] += 4;
+	if (p->action == 1)
+		p->pos[0] -= 3;
+	else if (p->action == 2)
+		p->pos[0] += 3;
+	else if (p->action == 4)
+		p->pos[1] -= 3;
+	else if (p->action == 3)
+		p->pos[1] += 3;
 }
