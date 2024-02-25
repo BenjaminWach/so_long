@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:35:50 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/22 12:55:35 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 16:06:03 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	close_hk(int keycode, t_data *game)
 //on pressure
 static int	key_press(int keycode, t_data *game)
 {
-	//printf("keycode envoye: %d\n", keycode);
 	set_action(keycode, game);
 	return (0);
 }
@@ -53,11 +52,10 @@ static int	key_press(int keycode, t_data *game)
 //on release
 static int	key_up(int keycode, t_data *game)
 {
-	//printf("keycode envoye dans key_up: %d\n", keycode);
 	if (keycode == 53)
 		close_hk(keycode, game);
-	//else if (keycode == 15)
-		//reset_game(game);
+	else if (keycode == 15)
+		game->reset = true;
 	else
 		unset_action(keycode, game);
 	return (0);

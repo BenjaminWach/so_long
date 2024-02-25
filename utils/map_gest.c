@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:24:15 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 17:57:28 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 16:06:54 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static int	can_finish(t_map *map)
 	map->exit->x = 0;
 	map->exit->y = 0;
 	exit_pos(map);
-	printf("coordonnees sortie:\nx: %d y: %d\n", map->exit->x, map->exit->y);
 	if (check_fill(map, map->exit) != 0)
 		return (-1);
 	return (0);

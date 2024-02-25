@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:49:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/22 00:50:13 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 02:26:47 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		error_msg(ERR_BER);
 	init_game_mlx(&game, argv);
 	init_sprites(&game);
-	print_map(game.map);
+	print_map(game.map->map, game.map);
 	key_hooks(&game);
 	mlx_loop_hook(game.mlx_ptr, run_loop, &game);
 	mlx_loop(game.mlx_ptr);

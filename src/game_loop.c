@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/22 11:48:01 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 02:14:45 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,38 +40,67 @@ static void	player_position(t_data *game)
 	p->bot_r[1] = p->pos[1] + 64 - hitbox_margin;
 }
 
-static char	**copying_map(t_map *map, char **cpy)
-{
-	int	i;
-
-	i = 0;
-	while (i < map->height)
-	{
-		ft_memcpy(cpy[i], map->map[i], map->width * sizeof(char));
-		i++;
-	}
-	return (cpy);
-}
-
 static void	draw_hitbox(t_data *game, t_play *player)
 {
 	int x, y;
 
-    // Dessiner le bord supérieur de la hitbox
-    for (x = player->top_l[0]; x <= player->top_r[0]; x++)
-		 mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, player->top_l[1], 0xFFFFFF);
+	// Dessiner le bord supérieur de la hitbox
+	for (x = player->top_l[0]; x <= player->top_r[0]; x++)
+		mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, player->top_l[1], 0xFFFFFF);
 
-    // Dessiner le bord inférieur de la hitbox
-    for (x = player->bot_l[0]; x <= player->bot_r[0]; x++)
-        mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, player->bot_l[1], 0xFFFFFF);
+	// Dessiner le bord inférieur de la hitbox
+	for (x = player->bot_l[0]; x <= player->bot_r[0]; x++)
+		mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, player->bot_l[1], 0xFFFFFF);
 
-    // Dessiner le bord gauche de la hitbox
-    for (y = player->top_l[1]; y <= player->bot_l[1]; y++)
-        mlx_pixel_put(game->mlx_ptr, game->win_ptr, player->top_l[0], y, 0xFFFFFF);
+	// Dessiner le bord gauche de la hitbox
+	for (y = player->top_l[1]; y <= player->bot_l[1]; y++)
+		mlx_pixel_put(game->mlx_ptr, game->win_ptr, player->top_l[0], y, 0xFFFFFF);
 
-    // Dessiner le bord droit de la hitbox
-    for (y = player->top_r[1]; y <= player->bot_r[1]; y++)
-        mlx_pixel_put(game->mlx_ptr, game->win_ptr, player->top_r[0], y, 0xFFFFFF);
+	// Dessiner le bord droit de la hitbox
+	for (y = player->top_r[1]; y <= player->bot_r[1]; y++)
+		mlx_pixel_put(game->mlx_ptr, game->win_ptr, player->top_r[0], y, 0xFFFFFF);
+}
+
+static void	mov_hud(t_data *game)
+{
+	char	*movements;
+	char	*counts;
+	int		x_pos;
+	int		y_pos;
+
+	movements = ft_itoa((game->moves) / 4);
+	counts = ft_strjoin("MOVEMENTS : ", movements);
+	x_pos = ((game->map->width * 64) / 2) - 64;
+	y_pos = (game->map->height * 64) - 20;
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->env[8],
+		(x_pos), (y_pos));
+	mlx_string_put(game->mlx_ptr, game->win_ptr, x_pos + (128 / 2) - 50 \
+		, y_pos + (20 / 2) + 5, 0x0000FF, counts);
+	free(movements);
+	free(counts);
+}
+
+static void	victoire_menu(t_data *game, t_map *m)
+{
+	char	*msg;
+
+	msg = "QUIT(ESC) or RESTART(r)";
+	mlx_string_put(game->mlx_ptr, game->win_ptr, m->width * 64 \
+			/ 2 - 32, (m->height * 64) / 2, 0x00FF00, "VICTOIRE !");
+	mlx_string_put(game->mlx_ptr, game->win_ptr, m->width * 64 \
+			/ 2 - 80, (m->height * 64) / 2 + 32, 0xFFFFFF, msg);
+}
+
+static void	game_render(t_data *game)
+{
+	player_position(game);
+	environment(game, game->map);
+	forest(game, game->map);
+	chest(game, game->map);
+	castle(game, game->map);
+	player(game);
+	draw_hitbox(game, game->player);
+	mov_hud(game);
 }
 
 int	run_loop(t_data *game)
@@ -83,22 +112,18 @@ int	run_loop(t_data *game)
 	diff = act_time - game->last_time;
 	if (diff > 31)
 	{
-		if (game->reset)
-		{
-			game->reset = false;
-			copying_map(game->map, game->cpy_map);
-			if (!game->map->walls_sp)
-				error_msg(ERR_CPY);
-		}
 		frame_per_second(game);
+		if (game->reset == true)
+		{
+			reset_game(game);
+		}
 		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-		player_position(game);
-		environment(game, game->map);
-		forest(game, game->map);
-		chest(game, game->map);
-		castle(game, game->map);
-		player(game);
-		draw_hitbox(game, game->player);
+		if (game->victory == 0)
+		{
+			game_render(game);
+		}
+		else
+			victoire_menu(game, game->map);
 	}
-	return (1);
+	return (0);
 }

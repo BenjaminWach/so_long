@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:51:18 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 23:45:28 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 16:08:46 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int	check_fill(t_map *map, t_pos *exit)
 	total_player = 0;
 	visited = allocate_tab_memset(map);
 	dfs(map, *exit, visited, &total_player);
-	printf("objets trouves: %d / %d\n", map->total_obj, map->nb_obj);
 	if (map->nb_obj != map->total_obj || total_player < 1)
 		return (-1);
 	free_array_ints(visited, map->height);

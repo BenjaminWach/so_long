@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/22 16:00:06 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 18:40:54 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ typedef struct s_play
 {
 	int		pos[2];
 	int		lpos[2];
-	int		hg[2];
-	int		hd[2];
-	int		g[2];
-	int		d[2];
+	//int		hg[2];
+	//int		hd[2];
+	//int		g[2];
+	//int		d[2];
 	int		action;
 	int		top_l[2];
 	int		top_r[2];
@@ -111,16 +111,17 @@ typedef struct s_data
 {
 	int			fps;
 	int			moves;
+	int			victory;
 	int			anim_idx;
 	char		*path;
 	char		**cpy_map;
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*env[8];
+	void		*env[9];
 	void		*obj[2];
 	void		*door[2];
 	void		*p[12];
-	void		*p_mv[16];
+	void		*p_mv[22];
 	bool		reset;
 	t_map		*map;
 	t_play		*player;
@@ -129,6 +130,8 @@ typedef struct s_data
 
 //main
 int			main(int argc, char **argv);
+void		reset_game(t_data *game);
+
 void		init_game_mlx(t_data *game, char **argv);
 int			valid_map(t_map *map);
 void		init_sprites(t_data *game);
@@ -176,8 +179,9 @@ void		error_map(char *msg, int err);
 
 //utils
 int			**allocate_tab_memset(t_map *map);
-void		print_map(t_map *map);
-void		print_visited(int **visited, int height, int width);
+void		print_map(char **str, t_map *map);
+char		**copying_map(t_map *map, char **cpy);
+
 
 //free
 void		free_und_exit(t_data *game, t_map *m);

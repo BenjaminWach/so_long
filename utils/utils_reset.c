@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   utils_reset.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 14:42:47 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 21:40:05 by bwach            ###   ########.fr       */
+/*   Created: 2024/02/24 01:10:22 by bwach             #+#    #+#             */
+/*   Updated: 2024/02/24 01:12:07 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	player(t_data *game)
+char	**copying_map(t_map *map, char **cpy)
 {
-	t_play	*p;
+	int	i;
 
-	p = game->player;
-	p->lpos[0] = p->pos[0];
-	p->lpos[1] = p->pos[1];
-	character_mvt(game, p);
-	mvt_count(game);
-	display_character(game, p);
+	i = 0;
+	while (i < map->height)
+	{
+		ft_memcpy(cpy[i], map->map[i], map->width * sizeof(char));
+		i++;
+	}
+	return (cpy);
 }

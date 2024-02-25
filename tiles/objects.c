@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:20:15 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/22 14:27:23 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 02:40:19 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ static void	interaction(t_map *map, int x, int y)
 {
 	if (map->nb_obj > 0 && map->taken[y][x] == 0)
 	{
-		printf("nb objet: %d\n", map->nb_obj);
 		map->nb_obj--;
-		printf("nb objet apres hitbox: %d\n", map->nb_obj);
 		map->taken[y][x] = 1;
 	}
 }

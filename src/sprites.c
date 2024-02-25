@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 21:59:06 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/15 11:39:35 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 18:41:01 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ static void	fetch_sprite(char *name, int nb_sprites, int category, t_data *game)
 
 void	init_sprites(t_data *game)
 {
-	fetch_sprite("env", 8, 1, game);
+	fetch_sprite("env", 9, 1, game);
 	fetch_sprite("exit", 2, 2, game);
 	fetch_sprite("obj", 2, 3, game);
 	fetch_sprite("idle", 12, 4, game);
-	fetch_sprite("mvt", 16, 5, game);
+	fetch_sprite("mvt", 22, 5, game);
 }

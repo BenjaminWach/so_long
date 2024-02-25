@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:27:02 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/22 11:22:53 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 19:29:06 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static int	actual_player_sprite(t_data *game)
 {
-	if ((game->player->action == 2 || game->player->action == 2)
-		|| game->player->action == 1 || game->player->action == 1)
+	if (game->player->action == 2 || game->player->action == 1)
 		return (get_walk_sprite(game));
 	else
 		return (up_down(game));
@@ -27,7 +26,7 @@ static int	*get_player_sprite(t_data *game)
 	static int	now;
 	static int	inter;
 
-	if (inter == 6)
+	if (inter == 5)
 	{
 		inter = 0;
 		now = actual_player_sprite(game);

@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:54:00 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/22 11:36:09 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/24 01:27:42 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	init_player(t_data *game, t_map *map)
 				game->player->direction = 0;
 			else
 				game->player->direction = 1;
-			return (1);
+			return (0);
 		}
 		len++;
 	}
@@ -91,6 +91,7 @@ static int	init_player(t_data *game, t_map *map)
 
 void	init_game_mlx(t_data *game, char **argv)
 {
+	game->victory = 0;
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		error_msg(ERR_INIT);
