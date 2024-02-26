@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/26 15:02:43 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/26 23:35:35 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@
 # define RED 				"\033[1;31m"
 # define GREEN				"\033[1;32m"
 # define RESET 				"\033[0m"
-
-# define HPX 15
-# define EXP 20
-# define MVX 6
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -80,10 +76,6 @@ typedef struct s_play
 {
 	int		pos[2];
 	int		lpos[2];
-	//int		hg[2];
-	//int		hd[2];
-	//int		g[2];
-	//int		d[2];
 	int		action;
 	int		top_l[2];
 	int		top_r[2];
@@ -146,6 +138,8 @@ void		draw_pic(int x, int y, void *sprite, t_data *game);
 //collision
 int			dist_to_right(t_map *m, t_play *p);
 int			dist_to_left(t_map *m, t_play *p);
+int			dist_to_top(t_map *m, t_play *p);
+int			dist_to_bot(t_map *m, t_play *p);
 
 //player
 void		player(t_data *game);
