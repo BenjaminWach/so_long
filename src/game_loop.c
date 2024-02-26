@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/26 12:59:28 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/26 16:14:33 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static void	player_position(t_data *game)
 	p->top_r[1] = p->pos[1] + hitbox_margin;
 	p->bot_l[0] = p->pos[0] + hitbox_margin;
 	p->bot_l[1] = p->pos[1] + 64 - hitbox_margin;
-	p->bot_r[0] = p->pos[0] + 64 - hitbox_margin;
-	p->bot_r[1] = p->pos[1] + 64 - hitbox_margin;
+	p->bot_r[0] = p->pos[0] + 64 - (hitbox_margin + 1);
+	p->bot_r[1] = p->pos[1] + 64 - (hitbox_margin + 1);
 }
 
 static void	draw_hitbox(t_data *game, t_play *player)
@@ -60,6 +60,42 @@ static void	draw_hitbox(t_data *game, t_play *player)
 	for (y = player->top_r[1]; y <= player->bot_r[1]; y++)
 		mlx_pixel_put(game->mlx_ptr, game->win_ptr, player->top_r[0], y, 0xFFFFFF);
 }
+
+/*static void	draw_wall_hitboxes(t_data *game, t_map *map)
+{
+    int x, y, i, j;
+
+    // Loop through each tile in the map
+    for (y = 0; y < map->height; y++)
+    {
+        for (x = 0; x < map->width; x++)
+        {
+            // If the tile is a wall
+            if (map->map[y][x] == '1')
+            {
+                // Convert map coordinates to pixel coordinates
+                int pixel_x = x * 64;
+                int pixel_y = y * 64;
+
+                // Draw the top border of the hitbox
+                for (i = pixel_x; i <= pixel_x + 64; i++)
+                    mlx_pixel_put(game->mlx_ptr, game->win_ptr, i, pixel_y, 0xFFFFFF);
+
+                // Draw the bottom border of the hitbox
+                for (i = pixel_x; i <= pixel_x + 64; i++)
+                    mlx_pixel_put(game->mlx_ptr, game->win_ptr, i, pixel_y + 64, 0xFFFFFF);
+
+                // Draw the left border of the hitbox
+                for (j = pixel_y; j <= pixel_y + 64; j++)
+                    mlx_pixel_put(game->mlx_ptr, game->win_ptr, pixel_x, j, 0xFFFFFF);
+
+                // Draw the right border of the hitbox
+                for (j = pixel_y; j <= pixel_y + 64; j++)
+                    mlx_pixel_put(game->mlx_ptr, game->win_ptr, pixel_x + 64, j, 0xFFFFFF);
+            }
+        }
+    }
+}*/
 
 static void	mov_hud(t_data *game)
 {
@@ -99,6 +135,7 @@ static void	game_render(t_data *game)
 	chest(game, game->map);
 	castle(game, game->map);
 	player(game);
+	//draw_wall_hitboxes(game, game->map);
 	draw_hitbox(game, game->player);
 	mov_hud(game);
 }

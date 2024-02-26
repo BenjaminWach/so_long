@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/26 13:24:08 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/26 15:02:43 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ void		draw_pic(int x, int y, void *sprite, t_data *game);
 
 //collision
 int			dist_to_right(t_map *m, t_play *p);
+int			dist_to_left(t_map *m, t_play *p);
 
 //player
 void		player(t_data *game);
