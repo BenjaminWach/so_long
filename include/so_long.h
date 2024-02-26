@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 18:40:54 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/26 13:24:08 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,9 @@ void		frame_per_second(t_data *game);
 int			run_loop(t_data *game);
 void		draw_pic(int x, int y, void *sprite, t_data *game);
 
+//collision
+int			dist_to_right(t_map *m, t_play *p);
+
 //player
 void		player(t_data *game);
 void		mini_raycasting(t_data *game, t_map *map);
@@ -181,7 +184,6 @@ void		error_map(char *msg, int err);
 int			**allocate_tab_memset(t_map *map);
 void		print_map(char **str, t_map *map);
 char		**copying_map(t_map *map, char **cpy);
-
 
 //free
 void		free_und_exit(t_data *game, t_map *m);
