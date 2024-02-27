@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 00:05:38 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 02:34:30 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/27 14:36:49 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	chest_state(t_data *game, t_map *m)
 			else if (m->taken[len / m->width][len % m->width] == 1)
 			{
 				draw_pic((len % m->width) * 64, (len / m->width) * 64,
-				game->obj[1], game);
+					game->obj[1], game);
 			}
 		}
 		len++;
@@ -63,6 +63,10 @@ static void	character_pos(t_data *game, t_play *p, t_map *m)
 void	reset_game(t_data *game)
 {
 	game->reset = false;
+	game->anim_idx = 0;
+	game->player->life = 4;
+	game->player->action = 0;
+	game->player->moving = false;
 	free_array_ints(game->map->taken, game->map->height);
 	game->map->taken = NULL;
 	copying_map(game->map, game->cpy_map);
@@ -72,11 +76,3 @@ void	reset_game(t_data *game)
 	character_pos(game, game->player, game->map);
 	chest_state(game, game->map);
 }
-
-/*
-/// @brief fonction pour reset le jeu dans la boucle
-/// @param game 
-void hard_reset(t_game *game)
-{
-
-}*/

@@ -6,7 +6,7 @@
 #    By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 13:26:01 by bwach             #+#    #+#              #
-#    Updated: 2024/02/24 01:12:00 by bwach            ###   ########.fr        #
+#    Updated: 2024/02/27 14:53:32 by bwach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ MPATH_DIR	=	src/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
 
-PLAYER_SRCS	=	player.c moves.c display_player.c display_moves.c
+PLAYER_SRCS	=	player.c moves.c display_player.c display_moves.c death.c
 PLAYER_DIR	=	player/
 PLAYER		=	$(addprefix $(PLAYER_DIR), $(PLAYER_SRCS))
 OBJ_P		=	$(PLAYER:.c=.o)
@@ -60,10 +60,10 @@ OBJ_T		=	$(TILES:.c=.o)
 
 #COMMANDS
 %.o: %.c $(HEADER) Makefile
-	@${CC} ${FLAGS} -Imlx -c $< -o $@ 
+	@$(CC) ${FLAGS} -Imlx -c $< -o $@
 
 all:  $(MLX) $(LBFT) $(NAME) #$(MAKE) norminette
-	
+
 norminette:
 	@$(PRINTF) "$(CYAN)\nCheck with dat Norminette: $(BIN) $(DEFAULT)\n"
 	@norminette -R CheckForbiddenSourceHeader $(MPATH_DIR) $(UTIL_DIR) $(LBFT_DIR)/*.c
@@ -74,18 +74,23 @@ $(NAME): $(MLX) $(LBFT) $(OBJ_U) $(OBJ_T) $(OBJ_P) $(OBJ_M)
 	@echo "$(GREEN)-------------------------------------$(DEFAULT)"
 	@echo "$(CYAN)\n         COMPILING: $(NAME)          \n$(DEFAULT)"
 	@echo "$(GREEN)-------------------------------------\n$(DEFAULT)"
+	@echo "███████╗ ██████╗         ██╗      ██████╗ ███╗   ██╗ ██████╗ "
+	@echo "██╔════╝██╔═══██╗        ██║     ██╔═══██╗████╗  ██║██╔════╝ "
+	@echo "███████╗██║   ██║        ██║     ██║   ██║██╔██╗ ██║██║  ███╗"
+	@echo "╚════██║██║   ██║        ██║     ██║   ██║██║╚██╗██║██║   ██║"
+	@echo "███████║╚██████╔╝███████╗███████╗╚██████╔╝██║ ╚████║╚██████╔╝"
+	@echo "╚══════╝ ╚═════╝ ╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝\n"
 	@$(CC) $(MLX_LIB) $(OBJ_U) $(OBJ_T) $(OBJ_P) $(LBFT) $(OBJ_M) $(MLX_FLAGS) -o $(NAME)
-	@$(PRINTF) "\r%100s\r$(GREEN)\t$(NAME) created!\n $(DEFAULT)"
 	
 $(MLX):
 	@echo "$(GREEN)-------------------------------------\n$(DEFAULT)"
-	@echo -e: "$(GREEN) MLX Compiling\n $(DEFAULT)"
+	@echo "$(GREEN) 	    MLX Compiling\n 			  $(DEFAULT)"
 	@echo "$(GREEN)-------------------------------------\n$(DEFAULT)"
 	@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
 
 $(LBFT):
 	@echo "$(GREEN)-------------------------------------\n$(DEFAULT)"
-	@echo -e: "$(GREEN) Libft Compiling\n $(DEFAULT)"
+	@echo "$(GREEN) 	    Libft Compiling\n			  $(DEFAULT)"
 	@echo "$(GREEN)-------------------------------------\n$(DEFAULT)"
 	@$(MAKE) -C $(LBFT_DIR)
 

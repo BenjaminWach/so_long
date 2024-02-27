@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/26 23:35:35 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/27 14:56:08 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define ERR_MAP_SIZE "Error:\nMap have wrong dimensions(x, y)\n"
 # define ERR_NO_END "Error:\nCannot access either objects or the exit\n"
 # define ERR_NO_EXIT "No exit found.\n"
-# define ERR_CAR "Error: \nDisallow any characters others then: C,E,P,0,1.\n"
+# define ERR_CAR "Error: \nDisallow any characters others then: C,E,P,0,1,M.\n"
 
 //Keycodes
 # define KEY_LEFT 0
@@ -74,6 +74,7 @@ typedef struct s_position
    direction: sens.*/
 typedef struct s_play
 {
+	int		life;
 	int		pos[2];
 	int		lpos[2];
 	int		action;
@@ -146,6 +147,10 @@ void		player(t_data *game);
 void		mini_raycasting(t_data *game, t_map *map);
 void		character_mvt(t_data *game, t_play *p);
 void		mvt_count(t_data *game);
+
+//death
+int			collision_death(t_map *m, t_play *p);
+void		is_dead(t_play *p, t_data *game);
 
 //sprite player
 void		display_character(t_data *game, t_play *p);

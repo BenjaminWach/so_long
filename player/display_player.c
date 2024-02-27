@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:27:02 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 19:29:06 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/27 13:10:03 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,16 @@ static int	actual_player_sprite(t_data *game)
 //static variable are initialized at 0 when not atributted
 static int	*get_player_sprite(t_data *game)
 {
-	static int	now;
 	static int	inter;
 
 	if (inter == 5)
 	{
 		inter = 0;
-		now = actual_player_sprite(game);
+		game->anim_idx = actual_player_sprite(game);
 	}
 	else
 		inter++;
-	return (game->p_mv[now]);
+	return (game->p_mv[game->anim_idx]);
 }
 
 void	display_character(t_data *game, t_play *p)

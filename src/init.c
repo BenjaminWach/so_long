@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:54:00 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 01:27:42 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/27 14:36:17 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static int	init_player(t_data *game, t_map *map)
 	size_t	len;
 
 	len = 0;
+	game->player->life = 4;
 	game->player->action = 0;
 	game->player->moving = false;
 	while (map->map[len / map->width])

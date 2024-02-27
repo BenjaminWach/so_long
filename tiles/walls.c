@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:53:40 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/26 23:42:54 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/27 15:00:51 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,14 @@ void	forest(t_data *game, t_map *m)
 	{
 		if (m->map[len / m->width][len % m->width] == '1')
 		{
+			random_walls(game, m, len);
+		}
+		if (m->map[len / m->width][len % m->width] == 'M')
+		{
 			if (is_not_surrended(m, len))
 				display_pond(game, m, len);
-			else
-				random_walls(game, m, len);
+			if (collision_death(m, game->player) == 1)
+				is_dead(game->player, game);
 		}
 		len++;
 	}
