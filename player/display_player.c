@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:27:02 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/27 13:10:03 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 00:22:00 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,17 @@ void	display_character(t_data *game, t_play *p)
 {
 	if (!p)
 		close_hk(53, game);
-	if (p->moving)
+	if (p->is_dead == true)
+	{
+		display_death(game, p);
+		is_dead(p, game);
+	}
+	if (p->moving && p->is_dead == false)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			get_player_sprite(game), p->pos[0], p->pos[1]);
 	else
-		display_idle(game, p);
+	{
+		if (p->is_dead == false)
+			display_idle(game, p);
+	}
 }

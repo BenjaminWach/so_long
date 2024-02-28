@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:13:03 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/27 14:56:08 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:51:59 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ typedef struct s_play
 	int		bot_l[2];
 	int		bot_r[2];
 	int		direction;
+	int		direction_death;
 	bool	moving;
+	bool	is_dead;
 }	t_play;
 
 typedef struct s_map
@@ -106,15 +108,17 @@ typedef struct s_data
 	int			moves;
 	int			victory;
 	int			anim_idx;
+	int			death_anim;
 	char		*path;
 	char		**cpy_map;
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*env[9];
+	void		*env[10];
 	void		*obj[2];
 	void		*door[2];
 	void		*p[12];
 	void		*p_mv[22];
+	void		*death[22];
 	bool		reset;
 	t_map		*map;
 	t_play		*player;
@@ -144,13 +148,14 @@ int			dist_to_bot(t_map *m, t_play *p);
 
 //player
 void		player(t_data *game);
-void		mini_raycasting(t_data *game, t_map *map);
 void		character_mvt(t_data *game, t_play *p);
 void		mvt_count(t_data *game);
 
 //death
+void		monster(t_data *game, t_map *m);
 int			collision_death(t_map *m, t_play *p);
 void		is_dead(t_play *p, t_data *game);
+void		display_death(t_data *game, t_play *p);
 
 //sprite player
 void		display_character(t_data *game, t_play *p);
@@ -176,8 +181,9 @@ void		set_action(int keycode, t_data *game);
 void		unset_action(int keycode, t_data *game);
 
 //errors
-void		error_msg(char *msg);
+void		error_msg(char *msg, t_data *game);
 void		error_map(char *msg, int err);
+void		error(char *msg);
 //char		free_and_exit(char *str);
 
 //utils

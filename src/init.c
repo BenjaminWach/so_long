@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:54:00 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/27 14:36:17 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:53:41 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ static void	init_map(t_map *map, t_data *game)
 
 	map->fd = open(game->path, O_RDONLY);
 	if (map->fd < 0)
-		error_msg(ERR_FILE);
+		error_msg(ERR_FILE, game);
 	map->str = malloc(sizeof(char) * 10000);
 	if (!map->str)
 		exit (EXIT_FAILURE);
 	bytes_rd = read(map->fd, map->str, 10000);
 	if (bytes_rd < 1)
-		error_msg(ERR_FILE);
+		error_msg(ERR_FILE, game);
 	map->str[bytes_rd] = '\0';
 	map->map = ft_split(map->str, '\n');
 	game->cpy_map = ft_split(map->str, '\n');
 	if (!map->map || !game->cpy_map)
-		error_msg(ERR_INIT);
+		error_msg(ERR_INIT, game);
 	map->width = get_width(map);
 	map->height = get_height(map);
 	map->total_obj = 0;
@@ -70,7 +70,8 @@ static int	init_player(t_data *game, t_map *map)
 	size_t	len;
 
 	len = 0;
-	game->player->life = 4;
+	game->player->is_dead = false;
+	game->player->life = 3;
 	game->player->action = 0;
 	game->player->moving = false;
 	while (map->map[len / map->width])
@@ -95,9 +96,13 @@ void	init_game_mlx(t_data *game, char **argv)
 	game->victory = 0;
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
-		error_msg(ERR_INIT);
+	{
+		free(game->mlx_ptr);
+		error_msg(ERR_INIT, game);
+	}
 	game->moves = 0;
 	game->anim_idx = 0;
+	game->death_anim = 0;
 	game->path = argv[1];
 	game->map = malloc(sizeof(t_map));
 	game->player = malloc(sizeof(t_play));
@@ -108,6 +113,9 @@ void	init_game_mlx(t_data *game, char **argv)
 	game->win_ptr = mlx_new_window(game->mlx_ptr, (game->map->width * 64),
 			(game->map->height * 64), "So_Long");
 	if (!game->win_ptr)
-		error_msg(ERR_WIN);
+	{
+		free(game->win_ptr);
+		error_msg(ERR_WIN, game);
+	}
 	init_player(game, game->map);
 }

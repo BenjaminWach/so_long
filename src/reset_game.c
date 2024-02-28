@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 00:05:38 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/27 14:36:49 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:26:59 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void	reset_game(t_data *game)
 {
 	game->reset = false;
 	game->anim_idx = 0;
-	game->player->life = 4;
+	game->death_anim = 0;
+	game->player->is_dead = false;
+	game->player->life = 3;
 	game->player->action = 0;
 	game->player->moving = false;
 	free_array_ints(game->map->taken, game->map->height);

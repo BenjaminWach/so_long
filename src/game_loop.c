@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/27 14:28:37 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:37:25 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,6 @@ static void	player_position(t_data *game)
 	p->bot_l[1] = p->pos[1] + 64 - hitbox_margin;
 	p->bot_r[0] = p->pos[0] + 64 - (hitbox_margin + 1);
 	p->bot_r[1] = p->pos[1] + 64 - (hitbox_margin + 1);
-}
-
-static void	draw_hitbox(t_data *game, t_play *player)
-{
-	int	x;
-	int	y;
-
-	// Dessiner le bord supérieur de la hitbox
-	for (x = player->top_l[0]; x <= player->top_r[0]; x++)
-		mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, player->top_l[1], 0xFFFFFF);
-	// Dessiner le bord inférieur de la hitbox
-	for (x = player->bot_l[0]; x <= player->bot_r[0]; x++)
-		mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, player->bot_l[1], 0xFFFFFF);
-	// Dessiner le bord gauche de la hitbox
-	for (y = player->top_l[1]; y <= player->bot_l[1]; y++)
-		mlx_pixel_put(game->mlx_ptr, game->win_ptr, player->top_l[0], y, 0xFFFFFF);
-	// Dessiner le bord droit de la hitbox
-	for (y = player->top_r[1]; y <= player->bot_r[1]; y++)
-		mlx_pixel_put(game->mlx_ptr, game->win_ptr, player->top_r[0], y, 0xFFFFFF);
 }
 
 static void	mov_hud(t_data *game)
@@ -96,8 +77,8 @@ static void	game_render(t_data *game)
 	forest(game, game->map);
 	chest(game, game->map);
 	castle(game, game->map);
+	monster(game, game->map);
 	player(game);
-	draw_hitbox(game, game->player);
 	mov_hud(game);
 }
 

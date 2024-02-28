@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:51:18 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 16:08:46 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:50:19 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	exit_pos(t_map *map)
 		}
 		y++;
 	}
-	error_msg(POS_NOT_FOUND);
+	error(POS_NOT_FOUND);
 	map->exit->x = -1;
 	map->exit->y = -1;
 }

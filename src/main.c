@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:49:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 02:26:47 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:48:46 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	main(int argc, char **argv)
 
 	srand(time(NULL));
 	if (argc != 2)
-		error_msg(ERR_ARG);
+		error_msg(ERR_ARG, &game);
 	if (is_ber(argv[1]) != 0)
-		error_msg(ERR_BER);
+		error_msg(ERR_BER, &game);
 	init_game_mlx(&game, argv);
 	init_sprites(&game);
 	print_map(game.map->map, game.map);

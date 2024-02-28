@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 13:31:50 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 02:37:03 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 00:23:32 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	castle(t_data *game, t_map *m)
 	t_play	*p;
 
 	p = game->player;
-	if (m->nb_obj == 0)
+	if (m->nb_obj == 0 && p->is_dead == false)
 	{
 		draw_pic(m->exit->x * 64, m->exit->y * 64, game->door[1], game);
 		if (collision_door(p, m) == 0 && game->victory == 0)

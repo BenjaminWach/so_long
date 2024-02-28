@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:27:39 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/23 22:35:10 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/27 21:17:40 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void	environment(t_data *game, t_map *m)
 	{
 		if (m->map[len / m->width][len % m->width] == '0' ||
 			m->map[len / m->width][len % m->width] == 'P' ||
-			m->map[len / m->width][len % m->width] == 'C')
+			m->map[len / m->width][len % m->width] == 'C' ||
+			m->map[len / m->width][len % m->width] == 'M')
 			draw_pic((len % m->width) * 64, (len / m->width) * 64,
-				game->env[6], game);
+				game->env[9], game);
 		len++;
 	}
 }

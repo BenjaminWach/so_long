@@ -6,16 +6,24 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:47:07 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/21 16:14:19 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:53:32 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	error_msg(char *msg)
+void	error(char *msg)
 {
 	write(2, msg, ft_strlen(msg));
-	exit (1);
+	return ;
+}
+
+void	error_msg(char *msg, t_data *game)
+{
+	write(2, msg, ft_strlen(msg));
+	if (game->map->str)
+		free(game->map->str);
+	exit (EXIT_FAILURE);
 }
 
 void	error_map(char *msg, int err)

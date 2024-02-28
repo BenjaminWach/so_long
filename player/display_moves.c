@@ -6,11 +6,30 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:35:44 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 21:17:00 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:25:58 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	display_death(t_data *game, t_play *p)
+{
+	if (game->death_anim <= 10)
+	{
+		if (p->direction_death == 1 || p->direction_death == 3)
+		{
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->death[game->death_anim], p->pos[0], p->pos[1]);
+		}
+		else if (p->direction_death == 0 || p->direction_death == 4)
+		{
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+				game->death[game->death_anim + 11], p->pos[0], p->pos[1]);
+		}
+		if (game->death_anim < 10)
+			game->death_anim++;
+	}
+}
 
 void	display_idle(t_data *game, t_play *p)
 {

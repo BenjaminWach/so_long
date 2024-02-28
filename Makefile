@@ -6,7 +6,7 @@
 #    By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/19 13:26:01 by bwach             #+#    #+#              #
-#    Updated: 2024/02/27 14:53:32 by bwach            ###   ########.fr        #
+#    Updated: 2024/02/28 01:31:19 by bwach            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,12 +62,12 @@ OBJ_T		=	$(TILES:.c=.o)
 %.o: %.c $(HEADER) Makefile
 	@$(CC) ${FLAGS} -Imlx -c $< -o $@
 
-all:  $(MLX) $(LBFT) $(NAME) #$(MAKE) norminette
+all:  $(MLX) $(LBFT) $(NAME) norminette
 
 norminette:
 	@$(PRINTF) "$(CYAN)\nCheck with dat Norminette: $(BIN) $(DEFAULT)\n"
-	@norminette -R CheckForbiddenSourceHeader $(MPATH_DIR) $(UTIL_DIR) $(LBFT_DIR)/*.c
-	@norminette -R CheckDefine $(MPATH_DIR) $(UTIL_DIR) $(TILES_DIR) $(LIBFT_DIR)/*.c
+	@norminette -R CheckForbiddenSourceHeader $(MPATH_DIR) $(PLAYER_DIR) $(UTIL_DIR) $(TILES_DIR)/*.c
+	@norminette -R CheckDefine $(MPATH_DIR) $(PLAYER_DIR) $(UTIL_DIR) $(TILES_DIR)/*.c
 	@echo "$(CYAN)\nNorminette done and validated faggot 🤣\n $(DEFAULT)"
 
 $(NAME): $(MLX) $(LBFT) $(OBJ_U) $(OBJ_T) $(OBJ_P) $(OBJ_M)
