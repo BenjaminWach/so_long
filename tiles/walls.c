@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 14:53:40 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/28 01:31:51 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 02:29:35 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static void	draw_monster(t_data *game, t_map *m, size_t len)
 		draw_pic((len % m->width) * 64, (len / m->width) * 64,
 			game->env[i], game);
 		count++;
-		if (count % 41 == 0)
+		if (count % 30 == 0)
 		{
-			i = (i % 6) + 2;
+			i = (i % 5) + 3;
 		}
 	}
 }
@@ -69,7 +69,8 @@ void	monster(t_data *game, t_map *m)
 			game->player->is_dead == false)
 		{
 			draw_monster(game, m, len);
-			if (collision_death(m, game->player) == 1)
+			if (collision_death(m, game->player) == 1
+				&& game->player->life == 0)
 				is_dead(game->player, game);
 		}
 		len++;

@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:35:44 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/28 01:25:58 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 02:08:10 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	display_idle(t_data *game, t_play *p)
 	static int	i;
 	static int	counter;
 
-	if (counter == 3)
+	if (counter == 10)
 	{
 		if (p->direction)
 		{

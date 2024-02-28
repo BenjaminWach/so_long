@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:41:10 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/24 19:18:20 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 02:24:42 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ void	set_action(int keycode, t_data *game)
 		if (p->action == 0 || p->action == fetch_action_keys(keycode))
 			p->action = fetch_action_keys(keycode);
 	}
-	if (p->action == 1)
+	if (p->action == 1 && p->is_dead == false)
 		p->direction = 0;
-	if (p->action == 2)
+	if (p->action == 2 && p->is_dead == false)
 		p->direction = 1;
-	if (p->action == 3)
+	if (p->action == 3 && p->is_dead == false)
 		p->direction = 3;
-	if (p->action == 4)
+	if (p->action == 4 && p->is_dead == false)
 		p->direction = 4;
 	p->moving = true;
 }
