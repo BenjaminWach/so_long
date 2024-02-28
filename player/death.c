@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:39:31 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/28 01:58:10 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 11:39:01 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	is_dead(t_play *p, t_data *game)
 	}
 }
 
+//use of time() to get tick of damage every 1 sec spend in the monster
 int	collision_death(t_map *m, t_play *p)
 {
 	int				collision;

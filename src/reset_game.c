@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 00:05:38 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/28 01:26:59 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 11:33:49 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	reset_game(t_data *game)
 	game->player->life = 3;
 	game->player->action = 0;
 	game->player->moving = false;
+	game->map->nb_obj = 0;
 	free_array_ints(game->map->taken, game->map->height);
 	game->map->taken = NULL;
 	copying_map(game->map, game->cpy_map);

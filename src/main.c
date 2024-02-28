@@ -6,7 +6,7 @@
 /*   By: bwach <bwach@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:49:24 by bwach             #+#    #+#             */
-/*   Updated: 2024/02/28 01:48:46 by bwach            ###   ########.fr       */
+/*   Updated: 2024/02/28 11:37:43 by bwach            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	is_ber(char *ber)
 	else
 		return (-1);
 }
-
+//print_map(game.map->map, game.map);
 int	main(int argc, char **argv)
 {
 	t_data	game;
@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 		error_msg(ERR_BER, &game);
 	init_game_mlx(&game, argv);
 	init_sprites(&game);
-	print_map(game.map->map, game.map);
 	key_hooks(&game);
 	mlx_loop_hook(game.mlx_ptr, run_loop, &game);
 	mlx_loop(game.mlx_ptr);
