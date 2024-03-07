@@ -24,7 +24,7 @@ To play my version of SO-LONG:
 1 - clone the repo:
 
 ```
-git clone https://github.com/BenjaminWach/42_so_long.git</p> 
+git clone https://github.com/BenjaminWach/42_so_long.git
 ```
 
 2 - To compile the project (there is a special rule for norminette: make norminette)
