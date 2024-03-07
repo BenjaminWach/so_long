@@ -68,7 +68,7 @@ norminette:
 	@$(PRINTF) "$(CYAN)\nCheck with dat Norminette: $(BIN) $(DEFAULT)\n"
 	@norminette -R CheckForbiddenSourceHeader $(MPATH_DIR) $(PLAYER_DIR) $(UTIL_DIR) $(TILES_DIR)/*.c
 	@norminette -R CheckDefine $(MPATH_DIR) $(PLAYER_DIR) $(UTIL_DIR) $(TILES_DIR)/*.c
-	@echo "$(CYAN)\nNorminette done and validated faggot 🤣\n $(DEFAULT)"
+	@echo "$(CYAN)\nNorminette done and validated 🤣\n $(DEFAULT)"
 
 $(NAME): $(MLX) $(LBFT) $(OBJ_U) $(OBJ_T) $(OBJ_P) $(OBJ_M)
 	@echo "$(GREEN)-------------------------------------$(DEFAULT)"
