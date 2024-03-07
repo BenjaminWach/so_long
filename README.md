@@ -1,5 +1,6 @@
 <h1 align="center">A 2D game SO_LONG 😄</h1>
-<div align="center"><img src="./img/game.png" /></div>
+<div align="center"><img src="img_readme/game.png" /></div>
+
 
 SO_LONG is the first graphical project in the main cursus of 42 school.
 It is giving students the core base knowledge in terms of using a graphic
